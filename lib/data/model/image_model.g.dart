@@ -6,6 +6,22 @@ part of 'image_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+ImageResponseModel _$ImageResponseModelFromJson(Map<String, dynamic> json) =>
+    ImageResponseModel(
+      page: json['page'] as int,
+      perPage: json['per_page'] as int,
+      photos: (json['photos'] as List<dynamic>)
+          .map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$ImageResponseModelToJson(ImageResponseModel instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'per_page': instance.perPage,
+      'photos': instance.photos,
+    };
+
 ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
       id: json['id'] as int,
       width: json['width'] as int,

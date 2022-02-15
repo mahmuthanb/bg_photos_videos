@@ -51,16 +51,18 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
           body: BlocBuilder<InternetCubit, InternetState>(
             builder: (context, state) {
               if (state is InternetConnected && state.connectivityResult != ConnectivityResult.none) {
-                return SafeArea(
-                  child: PageView(
-                    controller: _controller,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: const [
-                      HomePage(),
-                      PhotosScreen(),
-                      VideosScreen(),
-                      ProfileScreen(),
-                    ],
+                return Scaffold(
+                  body: SafeArea(
+                    child: PageView(
+                      controller: _controller,
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: const [
+                        HomePage(),
+                        PhotosScreen(),
+                        VideosScreen(),
+                        ProfileScreen(),
+                      ],
+                    ),
                   ),
                 );
               } else if (state is InternetDisconnected) {

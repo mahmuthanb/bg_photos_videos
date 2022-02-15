@@ -3,6 +3,23 @@ import 'package:json_annotation/json_annotation.dart';
 part 'image_model.g.dart';
 
 @JsonSerializable()
+class ImageResponseModel {
+  int page;
+  @JsonKey(name: 'per_page')
+  int perPage;
+  List<ImageModel> photos;
+
+  ImageResponseModel({
+    required this.page,
+    required this.perPage,
+    required this.photos,
+  });
+
+  factory ImageResponseModel.fromJson(Map<String, dynamic> data) => _$ImageResponseModelFromJson(data);
+  Map<String, dynamic> toJson() => _$ImageResponseModelToJson(this);
+}
+
+@JsonSerializable()
 class ImageModel {
   final int id;
   int width;

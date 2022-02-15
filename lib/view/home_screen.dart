@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   const SearchBar(enabled: false),
+                  Text(state.images.length.toString()),
                   CarouselSliderArea(imageList),
                   const CategoriesBar(),
                   PortraitCarouselTitle("Newest themes for you", imageList),

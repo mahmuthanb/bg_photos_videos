@@ -891,3 +891,4 @@ DerivedData/
 lib/generated_plugin_registrant.dart
 windows/flutter/generated_plugin_registrant.cc
 windows/flutter/generated_plugins.cmake
+lib/data/api_provider.dart

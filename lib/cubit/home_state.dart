@@ -8,6 +8,16 @@ class HomeLoading extends HomeState {}
 class HomeLoaded extends HomeState {
   final List<ImageModel> images;
   HomeLoaded({required this.images});
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is HomeLoaded && listEquals(other.images, images);
+  }
+
+  @override
+  int get hashCode => images.hashCode;
 }
 
 class HomeFailed extends HomeState {}
