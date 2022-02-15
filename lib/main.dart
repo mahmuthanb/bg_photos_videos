@@ -1,5 +1,6 @@
-import 'package:bg_photos_videos/cubit/image_cubit.dart';
+import 'package:bg_photos_videos/cubit/home_cubit.dart';
 import 'package:bg_photos_videos/cubit/internet_cubit.dart';
+import 'package:bg_photos_videos/data/network.dart';
 import 'package:bg_photos_videos/view/home_screen.dart';
 import 'package:bg_photos_videos/view/photos_screen.dart';
 import 'package:bg_photos_videos/view/profile_screen.dart';
@@ -28,6 +29,7 @@ class BgPhotosVideos extends StatefulWidget {
 
 class _BgPhotosVideosState extends State<BgPhotosVideos> {
   final Connectivity connectivity = Connectivity();
+  final NetworkService networkService = NetworkService();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,8 +38,15 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
       theme: customTheme,
       themeMode: ThemeMode.light,
       darkTheme: customDarkTheme,
-      home: BlocProvider(
-        create: (context) => InternetCubit(connectivity: connectivity),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<InternetCubit>(
+            create: (context) => InternetCubit(connectivity: connectivity),
+          ),
+          BlocProvider<HomeCubit>(
+            create: (context) => HomeCubit(networkService: networkService),
+          )
+        ],
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(
             builder: (context, state) {
