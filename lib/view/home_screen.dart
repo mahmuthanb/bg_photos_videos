@@ -16,7 +16,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> imageList = List.generate(10, (index) => "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    final List<String> imageList = List.generate(
+        10,
+        (index) =>
+            "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeLoaded) {
@@ -30,15 +33,17 @@ class HomePage extends StatelessWidget {
                   Text(state.images.length.toString()),
                   CarouselSliderArea(imageList),
                   const CategoriesBar(),
-                  PortraitCarouselTitle("Newest themes for you", imageList),
-                  PortraitCarouselTitle("Forest Themes", imageList),
-                  PortraitCarouselTitle("Selected For You", imageList),
+                  PortraitCarouselTitle("Newest themes for you", state.images),
+                  PortraitCarouselTitle("Forest Themes", state.images),
+                  PortraitCarouselTitle("Selected For You", state.images),
                 ],
               ),
             ),
           );
         } else if (state is HomeLoading) {
           return const LoadingScreen();
+        } else if (state is HomeFailed) {
+          return ErrorScreen(message: state.message);
         } else {
           return const ErrorScreen();
         }

@@ -6,6 +6,7 @@ import 'package:bg_photos_videos/view/photos_screen.dart';
 import 'package:bg_photos_videos/view/profile_screen.dart';
 import 'package:bg_photos_videos/view/search_screen.dart';
 import 'package:bg_photos_videos/view/videos_screen.dart';
+import 'package:bg_photos_videos/view/widgets/loading_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
               } else if (state is InternetDisconnected) {
                 return const Center(child: Text("Disconnected"));
               }
-              return const Center(child: CircularProgressIndicator());
+              return const LoadingScreen();
             },
           ),
           floatingActionButton: FloatingActionButton(

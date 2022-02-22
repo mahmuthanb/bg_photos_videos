@@ -12,19 +12,17 @@ class NetworkService {
     "Authorization": pexelsAPI,
   };
   Future<List<ImageModel>> fetchImages() async {
-    try {
-      final uri = Uri.https(baseUrl, photoUrl + '/curated');
-      final response = await http.get(uri, headers: queryParameters);
-      if (response.statusCode == 200) {
-        var decodedResponse = ImageResponseModel.fromJson(jsonDecode(response.body));
-
-        return decodedResponse.photos;
-      } else {
-        throw Exception(response.reasonPhrase);
-      }
-    } catch (e) {
-      Exception(e);
-      return [];
+    List<ImageModel> responseList = [];
+    final uri = Uri.https(baseUrl, '$photoUrl/curated');
+    final response = await http.get(uri, headers: queryParameters);
+    if (response.statusCode == 200) {
+      var decodedResponse =
+          ImageResponseModel.fromJson(jsonDecode(response.body));
+      responseList = decodedResponse.photos;
+      // return response;
+      return responseList;
+    } else {
+      throw Exception(response.reasonPhrase);
     }
   }
 }

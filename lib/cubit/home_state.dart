@@ -20,4 +20,17 @@ class HomeLoaded extends HomeState {
   int get hashCode => images.hashCode;
 }
 
-class HomeFailed extends HomeState {}
+class HomeFailed extends HomeState {
+  final String? message;
+  HomeFailed({this.message});
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is HomeFailed && other.message == message;
+  }
+
+  @override
+  int get hashCode => message.hashCode;
+}

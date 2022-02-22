@@ -8,7 +8,6 @@ class ImageRepository {
 
   Future<List<ImageModel>> fetchImage() async {
     final images = await networkService.fetchImages();
-
     return images;
   }
 }

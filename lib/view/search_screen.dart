@@ -9,7 +9,10 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final List<String> imageList = List.generate(10, (index) => "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    final List<String> imageList = List.generate(
+        10,
+        (index) =>
+            "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     //final TextEditingController textEditingController = TextEditingController();
 
     return Scaffold(
@@ -55,8 +58,8 @@ class SearchScreen extends StatelessWidget {
                 ),
               ),
             ),
-            PortraitCarouselTitle("Popular wallpapers", imageList),
-            PortraitCarouselTitle("Popular videos", imageList),
+            // PortraitCarouselTitle("Popular wallpapers", state.images),
+            // PortraitCarouselTitle("Popular videos", state.images),
           ],
         ),
       ),
