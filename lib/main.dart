@@ -51,7 +51,8 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(
             builder: (context, state) {
-              if (state is InternetConnected && state.connectivityResult != ConnectivityResult.none) {
+              if (state is InternetConnected &&
+                  state.connectivityResult != ConnectivityResult.none) {
                 return Scaffold(
                   body: SafeArea(
                     child: PageView(
@@ -72,13 +73,19 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
               return const LoadingScreen();
             },
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => Navigator.push(context, CupertinoPageRoute(builder: (BuildContext ctx) => const SearchScreen())),
-            child: const Icon(
-              Icons.search,
-            ),
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: Builder(builder: (context) {
+            return FloatingActionButton(
+              onPressed: () => Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                      builder: (BuildContext ctx) => const SearchScreen())),
+              child: const Icon(
+                Icons.search,
+              ),
+            );
+          }),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
           floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
           bottomNavigationBar: BottomNavigationBar(
             elevation: 0,
@@ -100,8 +107,9 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(icon: Icon(Icons.photo), label: "Photo"),
-              BottomNavigationBarItem(icon: Icon(Icons.video_collection), label: "Video"),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.video_collection), label: "Vde"),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Prf"),
             ],
           ),
         ),

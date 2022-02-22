@@ -1,4 +1,5 @@
 import 'package:bg_photos_videos/constants/style_guide.dart';
+import 'package:bg_photos_videos/data/model/image_model.dart';
 import 'package:bg_photos_videos/view/widgets/custom_cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 class CarouselSliderArea extends StatelessWidget {
   const CarouselSliderArea(this.imageList, {Key? key}) : super(key: key);
 
-  final List<String> imageList;
+  final List<ImageModel> imageList;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,11 @@ class CarouselSliderArea extends StatelessWidget {
           enlargeCenterPage: true,
           autoPlayAnimationDuration: const Duration(seconds: 1),
         ),
-        items: imageList.map((imageUrl) {
+        items: imageList.map((image) {
           return Builder(
             builder: (BuildContext context) {
-              return CustomCachedNetworkImage(imageUrl, width: size.width);
+              return CustomCachedNetworkImage(image.src["medium"]!,
+                  width: size.width);
             },
           );
         }).toList(),

@@ -22,10 +22,18 @@ ThemeData customTheme = ThemeData.light().copyWith(
     filled: true,
     fillColor: Colors.grey.shade200,
     prefixIconColor: Colors.grey.shade500,
-    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
-    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
-    disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    border: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
     isDense: true,
   ),
 );
@@ -41,10 +49,18 @@ ThemeData customDarkTheme = ThemeData.dark().copyWith(
     filled: true,
     fillColor: Colors.grey.shade800,
     prefixIconColor: Colors.white,
-    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade700, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade700, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
-    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade700, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
-    disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade700, width: 1), borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    border: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade700, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade700, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade700, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
+    disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade700, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(kGlobalRadius))),
     isDense: true,
   ),
 );

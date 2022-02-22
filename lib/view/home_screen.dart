@@ -16,10 +16,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> imageList = List.generate(
-        10,
-        (index) =>
-            "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeLoaded) {
@@ -30,12 +26,12 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   const SearchBar(enabled: false),
-                  Text(state.images.length.toString()),
-                  CarouselSliderArea(imageList),
+                  CarouselSliderArea(state.images[0]),
                   const CategoriesBar(),
-                  PortraitCarouselTitle("Newest themes for you", state.images),
-                  PortraitCarouselTitle("Forest Themes", state.images),
-                  PortraitCarouselTitle("Selected For You", state.images),
+                  PortraitCarouselTitle(
+                      "Newest themes for you", state.images[1]),
+                  PortraitCarouselTitle("Forest Themes", state.images[2]),
+                  PortraitCarouselTitle("Selected For You", state.images[3]),
                 ],
               ),
             ),

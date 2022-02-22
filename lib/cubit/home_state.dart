@@ -6,7 +6,7 @@ abstract class HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
-  final List<ImageModel> images;
+  final List<List<ImageModel>> images;
   HomeLoaded({required this.images});
 
   @override

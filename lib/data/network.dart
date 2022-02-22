@@ -25,4 +25,23 @@ class NetworkService {
       throw Exception(response.reasonPhrase);
     }
   }
+
+  Future<List<ImageModel>> searchImages(
+      String query, String? orientation) async {
+    List<ImageModel> responseList = [];
+    final uri = Uri.https(baseUrl, '$photoUrl/search', {
+      "query": query.trim(),
+      if (orientation != null) "orientation": orientation
+    });
+    final response = await http.get(uri, headers: queryParameters);
+    if (response.statusCode == 200) {
+      var decodedResponse =
+          ImageResponseModel.fromJson(jsonDecode(response.body));
+      responseList = decodedResponse.photos;
+      // return response;
+      return responseList;
+    } else {
+      throw Exception(response.reasonPhrase);
+    }
+  }
 }

@@ -11,15 +11,45 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   final NetworkService networkService;
   HomeCubit({required this.networkService}) : super(HomeLoading()) {
-    List<ImageModel> result = [];
-    ImageRepository(networkService: networkService).fetchImage().then((value) {
-      result = value;
-      return result;
-    }).then((value) {
-      emit(HomeLoaded(images: result));
-    }).onError((error, stackTrace) {
-      var errorOn = jsonEncode(error);
-      emit(HomeFailed(message: errorOn));
-    });
+    getAllImages().then((value) => {emit(HomeLoaded(images: value))});
+  }
+  Future<List<List<ImageModel>>> getAllImages() async {
+    List<List<ImageModel>> result = [];
+    await ImageRepository(networkService: networkService)
+        .searchImage("Turkey", orientation: "landscape")
+        .then((value) => result.add(value))
+        .onError((error, stackTrace) {
+          var errorOn = jsonEncode(error);
+          emit(HomeFailed(message: errorOn));
+        })
+        .whenComplete(() => ImageRepository(networkService: networkService)
+                .fetchImage()
+                .then((value) => result.add(value))
+                .onError((error, stackTrace) {
+              var errorOn = jsonEncode(error);
+              emit(HomeFailed(message: errorOn));
+            }).whenComplete(() =>
+                    ImageRepository(networkService: networkService)
+                        .searchImage("Turkey")
+                        .then((value) => result.add(value))
+                        .onError((error, stackTrace) {
+                      var errorOn = jsonEncode(error);
+                      emit(HomeFailed(message: errorOn));
+                    }).whenComplete(() =>
+                            ImageRepository(networkService: networkService)
+                                .searchImage("Turkey")
+                                .then((value) => result.add(value))
+                                .onError((error, stackTrace) {
+                              var errorOn = jsonEncode(error);
+                              emit(HomeFailed(message: errorOn));
+                            }))))
+        .onError((error, stackTrace) {
+          var errorOn = jsonEncode(error);
+          emit(HomeFailed(message: errorOn));
+        })
+        .then((value) {
+          return result;
+        });
+    return result;
   }
 }
