@@ -25,8 +25,76 @@ class CarouselSliderArea extends StatelessWidget {
         items: imageList.map((image) {
           return Builder(
             builder: (BuildContext context) {
-              return CustomCachedNetworkImage(image.src["medium"]!,
-                  width: size.width);
+              return Container(
+                width: size.width,
+                child: Stack(
+                  children: [
+                    CustomCachedNetworkImage(image.src["medium"]!,
+                        width: size.width),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      child: Container(
+                        width: size.width - 2 * kMobilePadding,
+                        height: 100,
+                        decoration: const BoxDecoration(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(kGlobalRadius)),
+                          gradient: LinearGradient(
+                              colors: [
+                                Colors.transparent,
+                                Colors.black,
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                        bottom: 5,
+                        child: Container(
+                          // color: Colors.amber,
+                          width: size.width - 2 * kMobilePadding,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: kMobilePadding / 2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                // color: Colors.red,
+                                width: (size.width - 4 * kMobilePadding) * .35,
+                                child: Wrap(children: [
+                                  Text(
+                                    image.photographer,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ]),
+                              ),
+                              Container(
+                                width: (size.width - 4 * kMobilePadding) * .65,
+                                child: Wrap(
+                                  alignment: WrapAlignment.end,
+                                  children: [
+                                    Text(
+                                      image.alt,
+                                      maxLines: 4,
+                                      textAlign: TextAlign.right,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+                  ],
+                ),
+              );
             },
           );
         }).toList(),

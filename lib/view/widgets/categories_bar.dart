@@ -10,11 +10,12 @@ class CategoriesBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const [
-          CategoryListingItem("Hot", Icon(Icons.abc)),
-          CategoryListingItem("Category", Icon(Icons.abc)),
-          CategoryListingItem("Top Charts", Icon(Icons.abc)),
-          CategoryListingItem("Selected", Icon(Icons.abc)),
-          CategoryListingItem("News", Icon(Icons.abc)),
+          CategoryListingItem("Hot", Icon(Icons.new_label_outlined)),
+          CategoryListingItem("Category", Icon(Icons.category)),
+          CategoryListingItem(
+              "Top Charts", Icon(Icons.format_list_numbered_rtl_outlined)),
+          CategoryListingItem("Selected", Icon(Icons.select_all)),
+          CategoryListingItem("News", Icon(Icons.newspaper)),
         ],
       ),
     );
@@ -22,7 +23,8 @@ class CategoriesBar extends StatelessWidget {
 }
 
 class CategoryListingItem extends StatelessWidget {
-  const CategoryListingItem(this.title, this.icon, {Key? key}) : super(key: key);
+  const CategoryListingItem(this.title, this.icon, {Key? key})
+      : super(key: key);
 
   final String title;
   final Icon icon;

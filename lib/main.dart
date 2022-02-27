@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'constants/style_guide.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const BgPhotosVideos());
 }
 
@@ -73,45 +74,45 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
               return const LoadingScreen();
             },
           ),
-          floatingActionButton: Builder(builder: (context) {
-            return FloatingActionButton(
-              onPressed: () => Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                      builder: (BuildContext ctx) => const SearchScreen())),
-              child: const Icon(
-                Icons.search,
-              ),
-            );
-          }),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
-          floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-          bottomNavigationBar: BottomNavigationBar(
-            elevation: 0,
-            unselectedItemColor: Colors.grey.shade600,
-            selectedItemColor: Colors.grey.shade400,
-            backgroundColor: Colors.transparent,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            currentIndex: selectedPage,
-            selectedIconTheme: const IconThemeData(size: 25),
-            unselectedIconTheme: const IconThemeData(size: 20),
-            type: BottomNavigationBarType.fixed,
-            onTap: (int index) {
-              _controller.jumpToPage(index);
-              setState(() {
-                selectedPage = index;
-              });
-            },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              BottomNavigationBarItem(icon: Icon(Icons.photo), label: "Photo"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.video_collection), label: "Vde"),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Prf"),
-            ],
-          ),
+          // floatingActionButton: Builder(builder: (context) {
+          //   return FloatingActionButton(
+          //     onPressed: () => Navigator.push(
+          //         context,
+          //         CupertinoPageRoute(
+          //             builder: (BuildContext ctx) => const SearchScreen())),
+          //     child: const Icon(
+          //       Icons.search,
+          //     ),
+          //   );
+          // }),
+          // floatingActionButtonLocation:
+          //     FloatingActionButtonLocation.centerFloat,
+          // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+          // bottomNavigationBar: BottomNavigationBar(
+          //   elevation: 0,
+          //   unselectedItemColor: Colors.grey.shade600,
+          //   selectedItemColor: Colors.grey.shade400,
+          //   backgroundColor: Colors.transparent,
+          //   showSelectedLabels: false,
+          //   showUnselectedLabels: false,
+          //   currentIndex: selectedPage,
+          //   selectedIconTheme: const IconThemeData(size: 25),
+          //   unselectedIconTheme: const IconThemeData(size: 20),
+          //   type: BottomNavigationBarType.fixed,
+          //   onTap: (int index) {
+          //     _controller.jumpToPage(index);
+          //     setState(() {
+          //       selectedPage = index;
+          //     });
+          //   },
+          //   items: const [
+          //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          //     BottomNavigationBarItem(icon: Icon(Icons.photo), label: "Photo"),
+          //     BottomNavigationBarItem(
+          //         icon: Icon(Icons.video_collection), label: "Vde"),
+          //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Prf"),
+          //   ],
+          // ),
         ),
       ),
     );

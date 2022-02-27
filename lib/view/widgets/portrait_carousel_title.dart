@@ -1,8 +1,11 @@
 import 'package:bg_photos_videos/constants/style_guide.dart';
 import 'package:bg_photos_videos/data/model/image_model.dart';
 import 'package:bg_photos_videos/view/image_detail_screen.dart';
+import 'package:bg_photos_videos/view/widgets/animated_dialog.dart';
 import 'package:bg_photos_videos/view/widgets/custom_cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PortraitCarouselTitle extends StatelessWidget {
   const PortraitCarouselTitle(
@@ -46,12 +49,70 @@ class PortraitCarouselTitle extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: imageList.length,
                 itemBuilder: (BuildContext context, int index) {
+                  OverlayEntry _popUpDialog = OverlayEntry(builder: (build));
                   ImageModel item = imageList[index];
                   return GestureDetector(
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: ((context) => ImageDetail(item)))),
+                    onLongPress: () {
+                      _popUpDialog = OverlayEntry(
+                        builder: ((context) => AnimatedDialog(
+                              child: Container(
+                                width: size.width * .8,
+                                // height: size.height * .45,
+                                decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(kGlobalRadius)),
+                                    color: Colors.white),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(kGlobalRadius))),
+                                      child: CachedNetworkImage(
+                                        imageUrl: item.src["large"]!,
+                                        width: size.width * .8,
+                                        // height: size.height * .4,
+                                        fit: BoxFit.fitWidth,
+                                        imageBuilder:
+                                            (context, imageProvider) =>
+                                                Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: const BorderRadius
+                                                    .all(
+                                                Radius.circular(kGlobalRadius)),
+                                            image: DecorationImage(
+                                              image: imageProvider,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: size.height * .05,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: const [
+                                          Icon(Icons.favorite_border),
+                                          Icon(Icons.question_answer),
+                                          Icon(Icons.more_vert),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )),
+                      );
+                      Overlay.of(context)?.insert(_popUpDialog);
+                    },
+                    onLongPressEnd: (details) => _popUpDialog.remove(),
                     child: Container(
                       padding: index == 0
                           ? const EdgeInsets.only(
@@ -63,7 +124,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                         children: [
                           Stack(children: [
                             CustomCachedNetworkImage(
-                              item.src["small"]!,
+                              item.src["medium"]!,
                               width: size.width * .3,
                               height: size.height * .2,
                             ),
