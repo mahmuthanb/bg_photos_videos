@@ -73,20 +73,38 @@ class PortraitCarouselTitle extends StatelessWidget {
                                       imageUrl: item.src["large"]!,
                                       width: size.width * .8,
                                       // height: size.height * .4,
-                                      fit: BoxFit.fitWidth,
-                                      // imageBuilder:
-                                      //     (context, imageProvider) =>
-                                      //         Container(
-                                      //   decoration: BoxDecoration(
-                                      //     borderRadius: const BorderRadius
-                                      //             .all(
-                                      //         Radius.circular(kGlobalRadius)),
-                                      //     image: DecorationImage(
-                                      //       image: imageProvider,
-                                      //       fit: BoxFit.cover,
-                                      //     ),
-                                      //   ),
-                                      // ),
+                                      fit: BoxFit.fill,
+                                      placeholder: (context, imageSrc) =>
+                                          Container(
+                                        decoration: const BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft:
+                                                Radius.circular(kGlobalRadius),
+                                            topRight:
+                                                Radius.circular(kGlobalRadius),
+                                          ),
+                                        ),
+                                        width: size.width * .8,
+                                        // height: size.width * .8,
+                                      ),
+                                      imageBuilder: (context, imageProvider) =>
+                                          Container(
+                                        // width: size.width * .8,
+                                        height: size.width * .8,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft:
+                                                Radius.circular(kGlobalRadius),
+                                            topRight:
+                                                Radius.circular(kGlobalRadius),
+                                          ),
+                                          image: DecorationImage(
+                                            image: imageProvider,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                     Container(
                                       height: size.height * .05,
