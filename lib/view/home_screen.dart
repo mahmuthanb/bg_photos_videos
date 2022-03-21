@@ -1,4 +1,5 @@
 import 'package:bg_photos_videos/cubit/home_cubit.dart';
+import 'package:bg_photos_videos/view/widgets/home_page_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:bg_photos_videos/view/widgets/carousel_slider.dart';
 import 'package:bg_photos_videos/view/widgets/categories_bar.dart';
@@ -18,7 +19,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state is HomeLoaded) {
+        if (state is HomeLoading || state is HomeLoaded) {
+          return const HomePageLoading();
+        } else if (state is HomeLoaded) {
           return SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
@@ -36,8 +39,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is HomeLoading) {
-          return const LoadingScreen();
         } else if (state is HomeFailed) {
           return ErrorScreen(message: state.message);
         } else {

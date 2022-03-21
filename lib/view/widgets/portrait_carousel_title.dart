@@ -5,7 +5,6 @@ import 'package:bg_photos_videos/view/widgets/animated_dialog.dart';
 import 'package:bg_photos_videos/view/widgets/custom_cached_network_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class PortraitCarouselTitle extends StatelessWidget {
   const PortraitCarouselTitle(
@@ -106,7 +105,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: size.height * .05,
                                       child: Row(
                                         mainAxisAlignment:
