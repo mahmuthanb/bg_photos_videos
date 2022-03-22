@@ -1,5 +1,4 @@
 import 'package:bg_photos_videos/constants/style_guide.dart';
-import 'package:bg_photos_videos/view/widgets/categories_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePageLoading extends StatelessWidget {
@@ -8,46 +7,128 @@ class HomePageLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Container(
-          // color: Colors.red,
-          width: size.width,
-          padding: const EdgeInsets.all(kMobilePadding),
-          child: TextFormField(
-            enabled: false,
-            // controller: searchController,
-            // decoration: InputDecoration(
-            // prefixIcon: const Icon(Icons.search),
-            // hintText: "nature, wolf, cat, puppy, kitten...",
-            // hintStyle: Theme.of(context).textTheme.bodyText1,
-            // ),
+    return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
+      child: Column(
+        children: [
+          Container(
+            width: size.width,
+            padding: const EdgeInsets.all(kMobilePadding),
+            child: TextFormField(
+              enabled: false,
+            ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: kMobilePadding),
-          width: size.width,
-          height: size.height * .25,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6),
-            color: Colors.grey.shade200,
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: kMobilePadding),
+            width: size.width,
+            height: size.height * .25,
+            decoration: radiusBoxDecoration,
           ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(kMobilePadding),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              CategoryItemPlaceholder(),
-              CategoryItemPlaceholder(),
-              CategoryItemPlaceholder(),
-              CategoryItemPlaceholder(),
-              CategoryItemPlaceholder(),
-              CategoryItemPlaceholder(),
-            ],
+          Container(
+            padding: const EdgeInsets.all(kMobilePadding),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                CategoryItemPlaceholder(),
+                CategoryItemPlaceholder(),
+                CategoryItemPlaceholder(),
+                CategoryItemPlaceholder(),
+                CategoryItemPlaceholder(),
+                CategoryItemPlaceholder(),
+              ],
+            ),
           ),
-        )
-      ],
+          const ImageCarouselPlaceholder(),
+          const ImageCarouselPlaceholder(),
+        ],
+      ),
+    );
+  }
+}
+
+class ImageCarouselPlaceholder extends StatelessWidget {
+  const ImageCarouselPlaceholder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: kMobilePadding),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: kMobilePadding),
+            height: size.height * .05,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: size.width * .2,
+                  height: size.height * .025,
+                  decoration: radiusBoxDecoration,
+                ),
+                Container(
+                  width: size.width * .15,
+                  height: size.height * .025,
+                  decoration: radiusBoxDecoration,
+                ),
+                // Text("MORE >"),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: size.height * .25,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 3,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    child: Container(
+                      padding: index == 0
+                          ? const EdgeInsets.only(
+                              left: kMobilePadding, right: kMobilePadding)
+                          : const EdgeInsets.only(right: kMobilePadding),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: size.width * .3,
+                            height: size.height * .2,
+                            decoration: radiusBoxDecoration,
+                          ),
+                          SizedBox(
+                            height: size.height * .04,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width: size.width * .15,
+                                  height: size.height * .015,
+                                  decoration: radiusBoxDecoration,
+                                ),
+                                Container(
+                                  width: size.width * .3,
+                                  height: size.height * .015,
+                                  decoration: radiusBoxDecoration,
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+          )
+        ],
+      ),
     );
   }
 }
@@ -70,19 +151,12 @@ class CategoryItemPlaceholder extends StatelessWidget {
             // color: Colors.black,
             width: size.width * .075,
             height: size.width * .075,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: Colors.grey.shade200,
-            ),
+            decoration: radiusBoxDecoration,
           ),
           Container(
-            width: size.width * .075,
-            height: size.width * .025,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: Colors.grey.shade200,
-            ),
-          ),
+              width: size.width * .075,
+              height: size.width * .025,
+              decoration: radiusBoxDecoration),
         ],
       ),
     );

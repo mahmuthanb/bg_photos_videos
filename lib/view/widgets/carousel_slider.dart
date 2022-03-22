@@ -25,7 +25,7 @@ class CarouselSliderArea extends StatelessWidget {
         items: imageList.map((image) {
           return Builder(
             builder: (BuildContext context) {
-              return Container(
+              return SizedBox(
                 width: size.width,
                 child: Stack(
                   children: [
@@ -62,17 +62,17 @@ class CarouselSliderArea extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
+                              SizedBox(
                                 // color: Colors.red,
                                 width: (size.width - 4 * kMobilePadding) * .35,
                                 child: Wrap(children: [
                                   Text(
                                     image.photographer,
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ]),
                               ),
-                              Container(
+                              SizedBox(
                                 width: (size.width - 4 * kMobilePadding) * .65,
                                 child: Wrap(
                                   alignment: WrapAlignment.end,

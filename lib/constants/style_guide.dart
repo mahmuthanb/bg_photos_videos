@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 const double kMobilePadding = 18.0;
 const double kGlobalRadius = 8.0;
 
+var radiusBoxDecoration = BoxDecoration(
+  color: Colors.grey.shade200,
+  borderRadius: BorderRadius.circular(5),
+);
+
 // Light Theme
 const Color kPrimaryColor = Colors.grey;
 Color kPrimaryScaffoldColor = Colors.grey.shade100;

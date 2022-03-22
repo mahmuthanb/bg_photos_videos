@@ -1,8 +1,4 @@
-import 'dart:async';
-import 'dart:collection';
-import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -76,7 +72,7 @@ class _InAppWebviewState extends State<InAppWebview> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text("Official InAppWebView website"),
+            title: const Text("Official InAppWebView website"),
             leading: Builder(
               builder: (BuildContext context) {
                 return IconButton(
@@ -93,7 +89,7 @@ class _InAppWebviewState extends State<InAppWebview> {
           body: SafeArea(
               child: Column(children: <Widget>[
             TextField(
-              decoration: InputDecoration(prefixIcon: Icon(Icons.search)),
+              decoration: const InputDecoration(prefixIcon: Icon(Icons.search)),
               controller: urlController,
               keyboardType: TextInputType.url,
               onSubmitted: (value) {
@@ -171,7 +167,7 @@ class _InAppWebviewState extends State<InAppWebview> {
                       }
                       setState(() {
                         this.progress = progress / 100;
-                        urlController.text = this.url;
+                        urlController.text = url;
                       });
                     },
                     onUpdateVisitedHistory: (controller, url, androidIsReload) {
@@ -181,7 +177,7 @@ class _InAppWebviewState extends State<InAppWebview> {
                       });
                     },
                     onConsoleMessage: (controller, consoleMessage) {
-                      print(consoleMessage);
+                      // print(consoleMessage);
                     },
                   ),
                   progress < 1.0

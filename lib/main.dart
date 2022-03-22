@@ -4,11 +4,9 @@ import 'package:bg_photos_videos/data/network.dart';
 import 'package:bg_photos_videos/view/home_screen.dart';
 import 'package:bg_photos_videos/view/photos_screen.dart';
 import 'package:bg_photos_videos/view/profile_screen.dart';
-import 'package:bg_photos_videos/view/search_screen.dart';
 import 'package:bg_photos_videos/view/videos_screen.dart';
 import 'package:bg_photos_videos/view/widgets/loading_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

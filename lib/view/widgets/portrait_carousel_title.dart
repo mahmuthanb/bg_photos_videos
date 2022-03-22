@@ -20,7 +20,6 @@ class PortraitCarouselTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      // color: Colors.amber,
       margin: const EdgeInsets.only(bottom: kMobilePadding),
       child: Column(
         children: [
@@ -71,7 +70,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                                     CachedNetworkImage(
                                       imageUrl: item.src["large"]!,
                                       width: size.width * .8,
-                                      // height: size.height * .4,
+                                      height: size.width,
                                       fit: BoxFit.fill,
                                       placeholder: (context, imageSrc) =>
                                           Container(
@@ -164,7 +163,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(item.photographer),
-                                Container(
+                                SizedBox(
                                   width: size.width * .3,
                                   // color: Colors.red,
                                   child: Text(

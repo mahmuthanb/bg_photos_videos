@@ -1,14 +1,12 @@
+import 'package:bg_photos_videos/view/widgets/error_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bg_photos_videos/cubit/home_cubit.dart';
 import 'package:bg_photos_videos/view/widgets/home_page_loading.dart';
-import 'package:flutter/material.dart';
 import 'package:bg_photos_videos/view/widgets/carousel_slider.dart';
 import 'package:bg_photos_videos/view/widgets/categories_bar.dart';
 import 'package:bg_photos_videos/view/widgets/portrait_carousel_title.dart';
 import 'package:bg_photos_videos/view/widgets/searchbar.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'widgets/error_screen.dart';
-import 'widgets/loading_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -19,7 +17,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state is HomeLoading || state is HomeLoaded) {
+        if (state is HomeLoading) {
           return const HomePageLoading();
         } else if (state is HomeLoaded) {
           return SizedBox(
