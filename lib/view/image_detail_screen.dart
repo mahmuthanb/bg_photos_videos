@@ -33,20 +33,22 @@ class ImageDetail extends StatelessWidget {
         leadingWidth: kToolbarHeight,
         backgroundColor:
             Color(int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
-        titleTextStyle: ThemeData().textTheme.headline6,
+        titleTextStyle:
+            ThemeData().textTheme.headline6!.copyWith(color: Colors.white70),
         leading: Builder(
           builder: (BuildContext context) {
             return Container(
               margin: const EdgeInsets.all(8),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white70,
-              ),
+              // decoration: const BoxDecoration(
+              //   shape: BoxShape.circle,
+              //   color: Colors.white70,
+              // ),
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back,
-                  color: Color(
-                      int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
+                  color: Colors.white70,
+                  // color: Color(
+                  //     int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
                 ),
                 onPressed: () {
                   // Scaffold.of(context).openDrawer();

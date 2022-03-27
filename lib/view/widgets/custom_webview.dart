@@ -68,6 +68,8 @@ class _InAppWebviewState extends State<InAppWebview> {
       appBar: AppBar(
         title: Text(title),
         backgroundColor: widget.appBarColor,
+        leadingWidth: 30,
+        centerTitle: true,
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
