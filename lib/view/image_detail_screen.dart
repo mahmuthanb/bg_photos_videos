@@ -99,11 +99,26 @@ class ImageDetail extends StatelessWidget {
                         children: [
                           Container(
                             padding: EdgeInsets.all(size.width * .025),
-                            child: CustomCachedNetworkImage(
-                              image.src.values.elementAt(index),
-                              width: size.width,
-                              height: size.height * .6,
-                            ),
+                            child: Stack(
+                                alignment: AlignmentDirectional.bottomEnd,
+                                children: [
+                                  CustomCachedNetworkImage(
+                                    image.src.values.elementAt(index),
+                                    width: size.width,
+                                    height: size.height * .6,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.all(size.height * .01),
+                                    child: Text(
+                                      image.src.keys
+                                          .elementAt(index)
+                                          .toUpperCase(),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                ]),
                           ),
                           const Text("ABOUT PHOTOGRAPHER"),
                           Divider(
@@ -127,7 +142,7 @@ class ImageDetail extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   // color: Colors.red,
                                   width: size.width * .2,
                                   child: Icon(
@@ -137,7 +152,7 @@ class ImageDetail extends StatelessWidget {
                                         "0xFF${image.avgColor.replaceAll("#", "")}")),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: size.width * .7,
                                   child: Column(
                                     crossAxisAlignment:
