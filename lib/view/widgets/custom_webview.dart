@@ -4,8 +4,10 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InAppWebview extends StatefulWidget {
-  const InAppWebview(this.incomingUrl, {Key? key}) : super(key: key);
+  const InAppWebview(this.incomingUrl, this.appBarColor, {Key? key})
+      : super(key: key);
   final String incomingUrl;
+  final Color appBarColor;
   @override
   State<InAppWebview> createState() => _InAppWebviewState();
 }
@@ -38,7 +40,6 @@ class _InAppWebviewState extends State<InAppWebview> {
   @override
   void initState() {
     super.initState();
-
     pullToRefreshController = PullToRefreshController(
       options: PullToRefreshOptions(
         color: Colors.blue,
@@ -59,35 +60,30 @@ class _InAppWebviewState extends State<InAppWebview> {
     super.dispose();
   }
 
-  String getHtmlTitle() {
-    String title = "";
-    webViewController?.getTitle().then((value) {
-      title = value!;
-    });
-    return title;
-  }
+  String title = "loading..";
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Official InAppWebView website"),
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  tooltip:
-                      MaterialLocalizations.of(context).openAppDrawerTooltip,
-                );
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        backgroundColor: widget.appBarColor,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
               },
-            ),
-          ),
-          body: SafeArea(
-              child: Column(children: <Widget>[
+              // tooltip:
+              //     MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
             TextField(
               decoration: const InputDecoration(prefixIcon: Icon(Icons.search)),
               controller: urlController,
@@ -164,6 +160,11 @@ class _InAppWebviewState extends State<InAppWebview> {
                     onProgressChanged: (controller, progress) {
                       if (progress == 100) {
                         pullToRefreshController.endRefreshing();
+                        webViewController?.getTitle().then((value) {
+                          setState(() {
+                            title = value!;
+                          });
+                        });
                       }
                       setState(() {
                         this.progress = progress / 100;
@@ -209,7 +210,9 @@ class _InAppWebviewState extends State<InAppWebview> {
             //     ),
             //   ],
             // ),
-          ]))),
+          ],
+        ),
+      ),
     );
   }
 }
