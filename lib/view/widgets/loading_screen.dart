@@ -12,7 +12,7 @@ class LoadingScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * .5,
+      height: size.height,
       color: Colors.green.shade300,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -35,7 +35,7 @@ class LoadingScreen extends StatelessWidget {
             child: AnimatedTextKit(
               repeatForever: true,
               animatedTexts: [
-                TypewriterAnimatedText('loading'),
+                TypewriterAnimatedText('connection waiting'),
               ],
             ),
           ),
