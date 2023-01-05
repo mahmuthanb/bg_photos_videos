@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:bg_photos_videos/constants/style_guide.dart';
+import 'package:bg_photos_videos/core/util/color_generator_ex.dart';
 import 'package:bg_photos_videos/data/model/image_model.dart';
 import 'package:bg_photos_videos/view/widgets/custom_cached_network_image.dart';
 import 'package:bg_photos_videos/view/widgets/custom_webview.dart';
@@ -19,6 +20,7 @@ class ImageDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final Color avgColor = Color(Formatter().bgColor(image.avgColor));
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,8 +33,7 @@ class ImageDetail extends StatelessWidget {
         centerTitle: true,
         toolbarHeight: kToolbarHeight,
         leadingWidth: kToolbarHeight,
-        backgroundColor:
-            Color(int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
+        backgroundColor: avgColor,
         titleTextStyle:
             ThemeData().textTheme.headline6!.copyWith(color: Colors.white70),
         leading: Builder(
@@ -64,8 +65,7 @@ class ImageDetail extends StatelessWidget {
                 return Container(
                   width: size.width,
                   // height: size.height * .1,
-                  color: Color(
-                      int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
+                  color: avgColor,
                 );
               },
             ),
@@ -78,7 +78,6 @@ class ImageDetail extends StatelessWidget {
               itemCount: image.src.length,
               itemBuilder: (context, index) {
                 // Optional Image Buttons
-                String avgColor = image.avgColor.replaceAll("#", "");
                 return GestureDetector(
                   onTap: () => showModalBottomSheet(
                     context: context,
@@ -123,8 +122,7 @@ class ImageDetail extends StatelessWidget {
                           const Text("ABOUT PHOTOGRAPHER"),
                           Divider(
                             height: size.height * .025,
-                            color: Color(int.parse(
-                                "0xFF${image.avgColor.replaceAll("#", "")}")),
+                            color: avgColor,
                             indent: size.width * .1,
                             endIndent: size.width * .1,
                             thickness: 1,
@@ -136,8 +134,7 @@ class ImageDetail extends StatelessWidget {
                                     builder: (BuildContext context) =>
                                         InAppWebview(
                                           image.photographerUrl,
-                                          Color(int.parse(
-                                              "0xFF${image.avgColor.replaceAll("#", "")}")),
+                                          avgColor,
                                         ))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -145,12 +142,8 @@ class ImageDetail extends StatelessWidget {
                                 SizedBox(
                                   // color: Colors.red,
                                   width: size.width * .2,
-                                  child: Icon(
-                                    Icons.photo_camera_front_rounded,
-                                    size: 50,
-                                    color: Color(int.parse(
-                                        "0xFF${image.avgColor.replaceAll("#", "")}")),
-                                  ),
+                                  child: Icon(Icons.photo_camera_front_rounded,
+                                      size: 50, color: avgColor),
                                 ),
                                 SizedBox(
                                   width: size.width * .7,
@@ -206,7 +199,7 @@ class ImageDetail extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(kGlobalRadius),
-                      color: Color(int.parse("0xFF$avgColor")),
+                      color: avgColor,
                     ),
                     margin: index == 0
                         ? const EdgeInsets.only(
@@ -253,40 +246,40 @@ class ImageDetail extends StatelessWidget {
           ),
           Container(
             width: size.width,
-            color:
-                Color(int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
+            color: avgColor,
             child: GestureDetector(
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (BuildContext context) => InAppWebview(
                             image.photographerUrl,
-                            Color(int.parse(
-                                "0xFF${image.avgColor.replaceAll("#", "")}")),
+                            avgColor,
                           ))),
-              child: Container(
-                // width: size.width * .24,
-                // color: Colors.black,
-                margin: const EdgeInsets.all(kMobilePadding / 2),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.photo_camera_front_rounded,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 5),
-                      child: Text(
-                        image.photographer,
-                        style: const TextStyle(
-                          color: Colors.white,
+              child: SafeArea(
+                child: Container(
+                  // width: size.width * .24,
+                  // color: Colors.black,
+                  margin: const EdgeInsets.all(kMobilePadding / 2),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.photo_camera_front_rounded,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          image.photographer,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
