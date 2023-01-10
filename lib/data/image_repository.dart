@@ -13,7 +13,8 @@ class ImageRepository {
 
   Future<List<ImageModel>> searchImage(String query,
       {String? orientation}) async {
-    final searchResult = await networkService.searchImages(query, orientation);
+    final searchResult =
+        await networkService.searchImages(query, orientation: orientation);
     return searchResult;
   }
 }

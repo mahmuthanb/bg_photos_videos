@@ -1,12 +1,12 @@
-import 'package:bg_photos_videos/view/widgets/error_screen.dart';
+import 'package:bg_photos_videos/home/cubit/home_cubit.dart';
+import 'package:bg_photos_videos/shared/view/widgets/error_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bg_photos_videos/cubit/home_cubit.dart';
-import 'package:bg_photos_videos/view/widgets/home_page_loading.dart';
-import 'package:bg_photos_videos/view/widgets/carousel_slider.dart';
-import 'package:bg_photos_videos/view/widgets/categories_bar.dart';
-import 'package:bg_photos_videos/view/widgets/portrait_carousel_title.dart';
-import 'package:bg_photos_videos/view/widgets/searchbar.dart';
+import 'package:bg_photos_videos/shared/view/widgets/home_page_loading.dart';
+import 'package:bg_photos_videos/shared/view/widgets/carousel_slider.dart';
+import 'package:bg_photos_videos/shared/view/widgets/portrait_carousel_title.dart';
+import 'package:bg_photos_videos/shared/view/widgets/searchbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -26,13 +26,11 @@ class HomePage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const SearchBar(enabled: false),
+                  const SearchBar(enabled: false, requestFocus: true),
                   CarouselSliderArea(state.images[0]),
-                  const CategoriesBar(),
-                  PortraitCarouselTitle(
-                      "Newest themes for you", state.images[1]),
-                  PortraitCarouselTitle("Forest Themes", state.images[2]),
-                  PortraitCarouselTitle("Selected For You", state.images[3]),
+                  PortraitCarouselTitle("Nature", state.images[1]),
+                  PortraitCarouselTitle("Deutschland", state.images[2]),
+                  PortraitCarouselTitle("Netherlands", state.images[3]),
                 ],
               ),
             ),

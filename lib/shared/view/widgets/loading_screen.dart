@@ -5,7 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({
     Key? key,
-  }) : super(key: key);
+    String? title,
+  })  : _title = title,
+        super(key: key);
+
+  final String? _title;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class LoadingScreen extends StatelessWidget {
             child: AnimatedTextKit(
               repeatForever: true,
               animatedTexts: [
-                TypewriterAnimatedText('connection waiting'),
+                TypewriterAnimatedText(_title ?? 'connection waiting'),
               ],
             ),
           ),

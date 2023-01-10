@@ -1,8 +1,8 @@
 import 'package:bg_photos_videos/constants/style_guide.dart';
 import 'package:bg_photos_videos/data/model/image_model.dart';
-import 'package:bg_photos_videos/view/image_detail_screen.dart';
-import 'package:bg_photos_videos/view/widgets/animated_dialog.dart';
-import 'package:bg_photos_videos/view/widgets/custom_cached_network_image.dart';
+import 'package:bg_photos_videos/shared/view/image_detail_page.dart';
+import 'package:bg_photos_videos/shared/view/widgets/animated_dialog.dart';
+import 'package:bg_photos_videos/shared/view/widgets/custom_cached_network_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

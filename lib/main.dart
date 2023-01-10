@@ -1,11 +1,13 @@
-import 'package:bg_photos_videos/cubit/home_cubit.dart';
-import 'package:bg_photos_videos/cubit/internet_cubit.dart';
+import 'package:bg_photos_videos/core/connectivity_check/cubit/internet_cubit.dart';
+
+import 'package:bg_photos_videos/data/image_repository.dart';
 import 'package:bg_photos_videos/data/network.dart';
-import 'package:bg_photos_videos/view/home_screen.dart';
-import 'package:bg_photos_videos/view/photos_screen.dart';
-import 'package:bg_photos_videos/view/profile_screen.dart';
-import 'package:bg_photos_videos/view/videos_screen.dart';
-import 'package:bg_photos_videos/view/widgets/loading_screen.dart';
+import 'package:bg_photos_videos/home/home.dart';
+import 'package:bg_photos_videos/search/cubit/search_cubit.dart';
+import 'package:bg_photos_videos/shared/view/photos_page.dart';
+import 'package:bg_photos_videos/shared/view/profile_page.dart';
+import 'package:bg_photos_videos/shared/view/videos_page.dart';
+import 'package:bg_photos_videos/shared/view/widgets/loading_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +32,9 @@ class BgPhotosVideos extends StatefulWidget {
 class _BgPhotosVideosState extends State<BgPhotosVideos> {
   final Connectivity connectivity = Connectivity();
   final NetworkService networkService = NetworkService();
+  final ImageRepository imageRepository = ImageRepository(
+    networkService: NetworkService(),
+  );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,11 +46,17 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
       home: MultiBlocProvider(
         providers: [
           BlocProvider<InternetCubit>(
-            create: (context) => InternetCubit(connectivity: connectivity),
+            create: (BuildContext context) =>
+                InternetCubit(connectivity: connectivity),
           ),
           BlocProvider<HomeCubit>(
-            create: (context) => HomeCubit(networkService: networkService),
-          )
+            create: (BuildContext context) =>
+                HomeCubit(networkService: networkService),
+          ),
+          BlocProvider(
+            create: (BuildContext context) =>
+                SearchCubit(imageRepository: imageRepository),
+          ),
         ],
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(
@@ -67,7 +78,9 @@ class _BgPhotosVideosState extends State<BgPhotosVideos> {
                   ),
                 );
               } else if (state is InternetDisconnected) {
-                return const Center(child: Text("Disconnected"));
+                return const LoadingScreen(
+                  title: "Disconnected",
+                );
               }
               return const LoadingScreen();
             },

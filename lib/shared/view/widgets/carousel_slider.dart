@@ -1,6 +1,6 @@
 import 'package:bg_photos_videos/constants/style_guide.dart';
 import 'package:bg_photos_videos/data/model/image_model.dart';
-import 'package:bg_photos_videos/view/widgets/custom_cached_network_image.dart';
+import 'package:bg_photos_videos/shared/view/widgets/custom_cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
