@@ -1,18 +1,16 @@
 import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'internet_state.dart';
 
 class InternetCubit extends Cubit<InternetState> {
-  // InternetCubit() : super(InternetLoading());
   final Connectivity connectivity;
   late StreamSubscription connectivityStreamSubscription;
   InternetCubit({required this.connectivity}) : super(InternetLoading()) {
-    connectivityStreamSubscription = connectivity.onConnectivityChanged.listen((connectivityResult) {
+    connectivityStreamSubscription =
+        connectivity.onConnectivityChanged.listen((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi) {
         emitInternetConnected(ConnectivityResult.wifi);
       } else if (connectivityResult == ConnectivityResult.mobile) {
@@ -23,7 +21,8 @@ class InternetCubit extends Cubit<InternetState> {
     });
   }
 
-  void emitInternetConnected(ConnectivityResult _connectivityResult) => emit(InternetConnected(connectivityResult: _connectivityResult));
+  void emitInternetConnected(ConnectivityResult connectivityResult) =>
+      emit(InternetConnected(connectivityResult: connectivityResult));
 
   void emitInternetDisconnected() => emit(InternetDisconnected());
 

@@ -94,7 +94,7 @@ class _InAppWebviewState extends State<InAppWebview> {
                 var urlToSubmit = Uri.parse(value);
                 if (urlToSubmit.scheme.isEmpty) {
                   urlToSubmit =
-                      Uri.parse("https://www.google.com/search?q=" + value);
+                      Uri.parse("https://www.google.com/search?q=$value");
                 }
                 webViewController?.loadUrl(
                     urlRequest: URLRequest(url: urlToSubmit));
@@ -137,12 +137,8 @@ class _InAppWebviewState extends State<InAppWebview> {
                         "javascript",
                         "about"
                       ].contains(uri.scheme)) {
-                        if (await canLaunch(url)) {
-                          // Launch the App
-                          await launch(
-                            url,
-                          );
-                          // and cancel the request
+                        if (await canLaunchUrl(Uri.parse(url))) {
+                          await launchUrl(Uri.parse(url));
                           return NavigationActionPolicy.CANCEL;
                         }
                       }

@@ -1,5 +1,5 @@
-import 'package:bg_photos_videos/app/data/model/image_model.dart';
-import 'package:bg_photos_videos/app/data/service/network.dart';
+import 'package:bg_photos_videos/core/data/model/image_model.dart';
+import 'package:bg_photos_videos/core/data/service/network.dart';
 
 class ImageRepository {
   final NetworkService networkService;

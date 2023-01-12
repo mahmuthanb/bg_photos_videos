@@ -1,5 +1,5 @@
 import 'package:bg_photos_videos/app/page/search/view/search_page.dart';
-import 'package:bg_photos_videos/constants/style_guide.dart';
+import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

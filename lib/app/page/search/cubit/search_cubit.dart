@@ -15,7 +15,7 @@ class SearchCubit extends Cubit<SearchState> {
     emit(SearchLoading());
     final searchResult = await imageRepository.searchImage(query);
     if (kDebugMode) {
-      print("searchresult length is: " + searchResult.length.toString());
+      print("searchresult length is: ${searchResult.length}");
     }
   }
 }

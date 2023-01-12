@@ -1,5 +1,5 @@
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
-import 'package:bg_photos_videos/constants/style_guide.dart';
+import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/app/page/image_detail/view/image_detail_page.dart';
 import 'package:bg_photos_videos/core/widget/animated_dialog.dart';
 import 'package:bg_photos_videos/core/widget/custom_cached_network_image.dart';
@@ -47,7 +47,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: imageList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  OverlayEntry _popUpDialog = OverlayEntry(builder: (build));
+                  OverlayEntry popUpDialog = OverlayEntry(builder: (build));
                   ImageModel item = imageList[index];
                   return GestureDetector(
                     onTap: () => Navigator.push(
@@ -55,7 +55,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                         MaterialPageRoute(
                             builder: ((context) => ImageDetail(item)))),
                     onLongPress: () {
-                      _popUpDialog = OverlayEntry(
+                      popUpDialog = OverlayEntry(
                         builder: ((context) => AnimatedDialog(
                               child: Container(
                                 width: size.width * .8,
@@ -121,9 +121,9 @@ class PortraitCarouselTitle extends StatelessWidget {
                               ),
                             )),
                       );
-                      Overlay.of(context)?.insert(_popUpDialog);
+                      Overlay.of(context)?.insert(popUpDialog);
                     },
-                    onLongPressEnd: (details) => _popUpDialog.remove(),
+                    onLongPressEnd: (details) => popUpDialog.remove(),
                     child: Container(
                       padding: index == 0
                           ? const EdgeInsets.only(
