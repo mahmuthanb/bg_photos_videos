@@ -1,9 +1,9 @@
-import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
-import 'package:bg_photos_videos/app/data/service/network.dart';
 import 'package:bg_photos_videos/app/page/connectivity_check/cubit/internet_cubit.dart';
 import 'package:bg_photos_videos/app/page/home/cubit/home_cubit.dart';
 import 'package:bg_photos_videos/app/page/home/view/home_page.dart';
 import 'package:bg_photos_videos/app/page/search/cubit/search_cubit.dart';
+import 'package:bg_photos_videos/core/data/repository/image_repository.dart';
+import 'package:bg_photos_videos/core/data/service/network.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/app/page/photos/view/photos_page.dart';
 import 'package:bg_photos_videos/app/page/profile/view/profile_page.dart';

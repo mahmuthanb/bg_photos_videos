@@ -1,5 +1,6 @@
 import 'dart:convert';
 // import 'package:bg_photos_videos/data/api_provider.dart';
+import 'package:bg_photos_videos/app/data/api_provider.dart';
 import 'package:bg_photos_videos/core/data/model/image_model.dart';
 import 'package:http/http.dart' as http;
 

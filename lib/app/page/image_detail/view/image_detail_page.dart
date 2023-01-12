@@ -1,4 +1,4 @@
-import 'package:bg_photos_videos/app/data/model/image_model.dart';
+import 'package:bg_photos_videos/core/data/model/image_model.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/custom_cached_network_image.dart';
 import 'package:bg_photos_videos/core/widget/custom_webview.dart';

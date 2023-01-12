@@ -1,4 +1,4 @@
-import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
+import 'package:bg_photos_videos/core/data/repository/image_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

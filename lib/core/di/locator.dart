@@ -5,4 +5,4 @@ import 'locator.config.dart';
 
 GetIt getIt = GetIt.instance;
 @InjectableInit()
-Future setupDI(String environment) => getIt.init(environment: environment);
+GetIt setupDI(String environment) => getIt.init(environment: environment);

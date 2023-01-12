@@ -1,4 +1,4 @@
-import 'package:bg_photos_videos/app/data/model/image_model.dart';
+import 'package:bg_photos_videos/core/data/model/image_model.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/app/page/image_detail/view/image_detail_page.dart';
 import 'package:bg_photos_videos/core/widget/animated_dialog.dart';

@@ -1,4 +1,4 @@
-import 'package:bg_photos_videos/core/alert/info_message.dart';
+// Package imports:
 import 'package:dio/dio.dart';
 
 class ErrorInterceptor extends Interceptor {
@@ -8,11 +8,12 @@ class ErrorInterceptor extends Interceptor {
       case DioErrorType.connectTimeout:
       case DioErrorType.sendTimeout:
       case DioErrorType.receiveTimeout:
-        InfoMessage(
-                message: "Bağlantı zaman aşımına uğradı.", status: Status.error)
-            .snack();
         throw DeadlineExceededException(err.requestOptions);
       case DioErrorType.response:
+        String? message = err.response?.data?["errorMessage"];
+        if (message != null) {
+          throw BaseError(message, err.requestOptions);
+        }
         switch (err.response?.statusCode) {
           case 400:
             throw BadRequestException(err.requestOptions);
@@ -23,36 +24,31 @@ class ErrorInterceptor extends Interceptor {
           case 409:
             throw ConflictException(err.requestOptions);
           case 500:
-            InfoMessage(
-                    message:
-                        "Bilinmeyen bir hata oluştu, lütfen daha sonra tekrar deneyin.",
-                    status: Status.error)
-                .snack();
             throw InternalServerErrorException(err.requestOptions);
         }
         break;
       case DioErrorType.cancel:
-        InfoMessage(message: "Yetkisiz işlem", status: Status.error).snack();
         break;
       case DioErrorType.other:
         switch (err.runtimeType) {
           case SSLCertificateException:
-            InfoMessage(
-                    message: "SSL sertifikası doğrulanamadı.",
-                    status: Status.error)
-                .snack();
             throw SSLCertificateException(err.requestOptions);
 
           default:
-            InfoMessage(
-                    message: "İnternet bağlantısı bulunamadı, tekrar deneyin.",
-                    status: Status.error)
-                .snack();
             throw NoInternetConnectionException(err.requestOptions);
         }
     }
 
     return super.onError(err, handler);
+  }
+}
+
+class BaseError extends DioError {
+  BaseError(this.text, RequestOptions r) : super(requestOptions: r);
+  final String text;
+  @override
+  String toString() {
+    return text;
   }
 }
 
