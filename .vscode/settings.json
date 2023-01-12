@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/*.g.dart": true,
+        "**/*.config.dart": true,
+        ".**": true,
+        "**/*.iml": true,
+        "build": true,
+        "android": true,
+        "ios": true,
+    }
+}
