@@ -5,11 +5,13 @@ class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     switch (err.type) {
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
+      case DioErrorType.connectionError:
       case DioErrorType.sendTimeout:
       case DioErrorType.receiveTimeout:
+      case DioErrorType.badCertificate:
         throw DeadlineExceededException(err.requestOptions);
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         String? message = err.response?.data?["errorMessage"];
         if (message != null) {
           throw BaseError(message, err.requestOptions);
@@ -29,7 +31,7 @@ class ErrorInterceptor extends Interceptor {
         break;
       case DioErrorType.cancel:
         break;
-      case DioErrorType.other:
+      case DioErrorType.unknown:
         switch (err.runtimeType) {
           case SSLCertificateException:
             throw SSLCertificateException(err.requestOptions);
@@ -126,7 +128,7 @@ class CancelException extends DioError {
 
 class SSLCertificateException extends DioError {
   SSLCertificateException(RequestOptions r)
-      : super(requestOptions: r, type: DioErrorType.other);
+      : super(requestOptions: r, type: DioErrorType.unknown);
 
   @override
   String toString() {
