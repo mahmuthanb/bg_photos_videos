@@ -121,7 +121,7 @@ class PortraitCarouselTitle extends StatelessWidget {
                               ),
                             )),
                       );
-                      Overlay.of(context)?.insert(popUpDialog);
+                      Overlay.of(context).insert(popUpDialog);
                     },
                     onLongPressEnd: (details) => popUpDialog.remove(),
                     child: Container(
