@@ -11,9 +11,9 @@ abstract class AppModule {
     Dio dio = Dio(
       BaseOptions(
         baseUrl: getIt<AppConfig>().baseUrl,
-        connectTimeout: 10000,
-        receiveTimeout: 10000,
-        sendTimeout: 10000,
+        connectTimeout: const Duration(milliseconds: 10000),
+        receiveTimeout: const Duration(milliseconds: 10000),
+        sendTimeout: const Duration(milliseconds: 10000),
       ),
     );
     if (kDebugMode) {
