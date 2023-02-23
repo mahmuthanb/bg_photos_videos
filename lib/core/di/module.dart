@@ -2,6 +2,7 @@ import 'package:bg_photos_videos/app/data/api_provider.dart';
 import 'package:bg_photos_videos/app/data/service/api_service.dart';
 import 'package:bg_photos_videos/core/source/app_config.dart';
 import 'package:bg_photos_videos/core/di/locator.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -31,4 +32,7 @@ abstract class AppModule {
 
   @lazySingleton
   ApiService get injectApiService => ApiService(injectRetrofitAPI);
+
+  @lazySingleton
+  Connectivity get connectivity => Connectivity();
 }

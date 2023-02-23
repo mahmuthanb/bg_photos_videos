@@ -7,6 +7,7 @@ import 'package:bg_photos_videos/app/page/home/view/home_page.dart';
 import 'package:bg_photos_videos/app/page/photos/view/photos_page.dart';
 import 'package:bg_photos_videos/app/page/profile/view/profile_page.dart';
 import 'package:bg_photos_videos/app/page/search/cubit/search_cubit.dart';
+import 'package:bg_photos_videos/app/page/search/view/search_page.dart';
 import 'package:bg_photos_videos/app/page/videos/view/videos_page.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/loading_screen.dart';
@@ -39,7 +40,9 @@ class _MainAppState extends State<MainApp> {
               create: (BuildContext context) => InternetCubit()),
           BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit()),
-          BlocProvider(create: (BuildContext context) => SearchCubit()),
+          BlocProvider<SearchCubit>(
+            child: SearchScreen(),
+          ),
         ],
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(
