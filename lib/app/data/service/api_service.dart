@@ -9,4 +9,10 @@ abstract class ApiService {
 
   @POST("/v1/curated")
   Future<List<ImageModel>> fetchImages();
+
+  @POST("/v1/search")
+  Future<List<ImageModel>> searchImages(
+    @Query("query") String query,
+    @Query("orientation") String? orientation,
+  );
 }

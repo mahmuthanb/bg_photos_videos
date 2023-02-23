@@ -1,42 +1,39 @@
 import 'dart:convert';
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
 import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
-import 'package:bg_photos_videos/app/data/service/network.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final NetworkService networkService;
-  HomeCubit({required this.networkService}) : super(HomeLoading()) {
+  final ImageRepository _imageRepository;
+  HomeCubit(this._imageRepository) : super(HomeLoading()) {
     getAllImages().then((value) => {emit(HomeLoaded(images: value))});
   }
 
   Future<List<List<ImageModel>>> getAllImages() async {
     List<List<ImageModel>> result = [];
-    await ImageRepository(networkService: networkService)
+    await _imageRepository
         .searchImage("Nature", orientation: "landscape")
         .then((value) => result.add(value))
         .onError((error, stackTrace) {
           var errorOn = jsonEncode(error);
           emit(HomeFailed(message: errorOn));
         })
-        .whenComplete(() => ImageRepository(networkService: networkService)
+        .whenComplete(() => _imageRepository
                 .fetchImage()
                 .then((value) => result.add(value))
                 .onError((error, stackTrace) {
               var errorOn = jsonEncode(error);
               emit(HomeFailed(message: errorOn));
-            }).whenComplete(() =>
-                    ImageRepository(networkService: networkService)
+            }).whenComplete(() => _imageRepository
                         .searchImage("Germany")
                         .then((value) => result.add(value))
                         .onError((error, stackTrace) {
                       var errorOn = jsonEncode(error);
                       emit(HomeFailed(message: errorOn));
-                    }).whenComplete(() =>
-                            ImageRepository(networkService: networkService)
+                    }).whenComplete(() => _imageRepository
                                 .searchImage("Netherlands")
                                 .then((value) => result.add(value))
                                 .onError((error, stackTrace) {

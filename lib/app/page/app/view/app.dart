@@ -1,4 +1,5 @@
 import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
+import 'package:bg_photos_videos/app/data/service/api_service.dart';
 import 'package:bg_photos_videos/app/data/service/network.dart';
 import 'package:bg_photos_videos/app/page/connectivity_check/cubit/internet_cubit.dart';
 import 'package:bg_photos_videos/app/page/home/cubit/home_cubit.dart';
@@ -24,11 +25,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final Connectivity connectivity = Connectivity();
-  final NetworkService networkService = NetworkService();
-  final ImageRepository imageRepository = ImageRepository(
-    networkService: NetworkService(),
-  );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,17 +36,10 @@ class _MainAppState extends State<MainApp> {
       home: MultiBlocProvider(
         providers: [
           BlocProvider<InternetCubit>(
-            create: (BuildContext context) =>
-                InternetCubit(connectivity: connectivity),
-          ),
+              create: (BuildContext context) => InternetCubit()),
           BlocProvider<HomeCubit>(
-            create: (BuildContext context) =>
-                HomeCubit(networkService: networkService),
-          ),
-          BlocProvider(
-            create: (BuildContext context) =>
-                SearchCubit(imageRepository: imageRepository),
-          ),
+              create: (BuildContext context) => HomeCubit()),
+          BlocProvider(create: (BuildContext context) => SearchCubit()),
         ],
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(

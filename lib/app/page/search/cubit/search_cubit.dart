@@ -6,14 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
-  final ImageRepository imageRepository;
+  final ImageRepository _imageRepository;
 
   // SearchCubit() : super(SearchInitial());
-  SearchCubit({required this.imageRepository}) : super(SearchInitial());
+  SearchCubit(this._imageRepository) : super(SearchInitial());
 
   doSearch(String query) async {
     emit(SearchLoading());
-    final searchResult = await imageRepository.searchImage(query);
+    final searchResult = await _imageRepository.searchImage(query);
     if (kDebugMode) {
       print("searchresult length is: ${searchResult.length}");
     }

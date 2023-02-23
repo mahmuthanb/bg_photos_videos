@@ -1,19 +1,21 @@
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
-import 'package:bg_photos_videos/app/data/service/network.dart';
+import 'package:bg_photos_videos/app/data/service/api_service.dart';
 
 class ImageRepository {
-  final NetworkService networkService;
+  final ApiService _apiService;
 
-  ImageRepository({required this.networkService});
+  ImageRepository(this._apiService);
 
   Future<List<ImageModel>> fetchImage() async {
-    final images = await networkService.fetchImages();
+    final images = await _apiService.fetchImages();
     return images;
   }
 
-  Future<List<ImageModel>> searchImage(String query,
-      {String? orientation}) async {
-    final searchResult = await networkService.searchImages(query, orientation);
+  Future<List<ImageModel>> searchImage(
+    String query, {
+    String? orientation,
+  }) async {
+    final searchResult = await _apiService.searchImages(query, orientation);
     return searchResult;
   }
 }
