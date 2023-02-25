@@ -38,11 +38,10 @@ class _MainAppState extends State<MainApp> {
         providers: [
           BlocProvider<InternetCubit>(
               create: (BuildContext context) => InternetCubit()),
+          RepositoryProvider(create: (context) => ImageRepository()),
           BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit()),
-          BlocProvider<SearchCubit>(
-            child: SearchScreen(),
-          ),
+          BlocProvider<SearchCubit>(child: SearchScreen()),
         ],
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(
