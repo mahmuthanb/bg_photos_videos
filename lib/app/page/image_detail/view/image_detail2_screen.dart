@@ -16,7 +16,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
-//     final Size size = MediaQuery.of(context).size;
+//     final Size size = MediaQuery.sizeOf(context);
 //     final Color avgColor = Color(Formatter().bgColor(image.avgColor));
 //     return Scaffold(
 //       appBar: AppBar(

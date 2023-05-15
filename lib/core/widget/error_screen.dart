@@ -11,7 +11,7 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     return Container(
       width: size.width,
       height: size.height * .5,

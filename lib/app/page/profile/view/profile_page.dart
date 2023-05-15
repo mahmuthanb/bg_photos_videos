@@ -6,7 +6,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     return SizedBox(
       height: size.height,
       child: const Column(

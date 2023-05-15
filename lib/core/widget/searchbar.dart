@@ -21,7 +21,7 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     final TextEditingController textEditingController = TextEditingController();
     FocusNode searchFocusNode = FocusNode();
     if (searchController != null) {

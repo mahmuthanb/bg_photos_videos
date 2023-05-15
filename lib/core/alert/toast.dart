@@ -48,24 +48,27 @@ class ToastView {
     overlayState = Overlay.of(context, rootOverlay: rootNavigator ?? false);
 
     _overlayEntry = OverlayEntry(
-      builder: (BuildContext context) => ToastWidget(
-          widget: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: background,
-                    borderRadius: BorderRadius.circular(backgroundRadius),
-                    border: border,
-                  ),
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
-                  child: Text(msg, softWrap: true, style: textStyle),
-                )),
-          ),
-          gravity: gravity),
+      builder: (BuildContext context) {
+        var size = MediaQuery.sizeOf(context);
+        return ToastWidget(
+            widget: SizedBox(
+              width: size.width,
+              child: Container(
+                  alignment: Alignment.center,
+                  width: size.width,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: background,
+                      borderRadius: BorderRadius.circular(backgroundRadius),
+                      border: border,
+                    ),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+                    child: Text(msg, softWrap: true, style: textStyle),
+                  )),
+            ),
+            gravity: gravity);
+      },
     );
     _isVisible = true;
     overlayState!.insert(_overlayEntry!);
@@ -91,10 +94,10 @@ class ToastWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var viewInsets = MediaQuery.viewInsetsOf(context);
     return Positioned(
-        top: gravity == 2 ? MediaQuery.of(context).viewInsets.top + 50 : null,
-        bottom:
-            gravity == 0 ? MediaQuery.of(context).viewInsets.bottom + 50 : null,
+        top: gravity == 2 ? viewInsets.top + 50 : null,
+        bottom: gravity == 0 ? viewInsets.bottom + 50 : null,
         child: Material(
           color: Colors.transparent,
           child: widget,

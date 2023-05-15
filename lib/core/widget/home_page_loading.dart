@@ -9,7 +9,7 @@ class HomePageLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: Column(
@@ -56,7 +56,7 @@ class ImageCarouselPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
 
     return Container(
       margin: const EdgeInsets.only(bottom: kMobilePadding),
@@ -143,7 +143,7 @@ class CategoryItemPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     return Container(
       height: size.height * .06,
       color: Colors.transparent,

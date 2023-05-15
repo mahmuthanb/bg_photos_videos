@@ -20,7 +20,7 @@ class ImageDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor:
           Color(int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),

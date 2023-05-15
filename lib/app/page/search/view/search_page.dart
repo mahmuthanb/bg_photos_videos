@@ -19,7 +19,7 @@ class SearchScreen extends StatelessWidget {
   final bool? requestFocus;
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.sizeOf(context);
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         if (state is SearchInitial) {
