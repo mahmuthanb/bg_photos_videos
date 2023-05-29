@@ -18,26 +18,26 @@ class HomeCubit extends Cubit<HomeState> {
     List<List<ImageModel>> result = [];
     await _imageRepository
         .searchImage("Nature", orientation: "landscape")
-        .then((value) => result.add(value))
+        .then((value) => result.add(value.photos!))
         .onError((error, stackTrace) {
           var errorOn = jsonEncode(error);
           emit(HomeFailed(message: errorOn));
         })
         .whenComplete(() => _imageRepository
                 .fetchImage()
-                .then((value) => result.add(value))
+                .then((value) => result.add(value.photos!))
                 .onError((error, stackTrace) {
               var errorOn = jsonEncode(error);
               emit(HomeFailed(message: errorOn));
             }).whenComplete(() => _imageRepository
                         .searchImage("Germany")
-                        .then((value) => result.add(value))
+                        .then((value) => result.add(value.photos!))
                         .onError((error, stackTrace) {
                       var errorOn = jsonEncode(error);
                       emit(HomeFailed(message: errorOn));
                     }).whenComplete(() => _imageRepository
                                 .searchImage("Netherlands")
-                                .then((value) => result.add(value))
+                                .then((value) => result.add(value.photos!))
                                 .onError((error, stackTrace) {
                               var errorOn = jsonEncode(error);
                               emit(HomeFailed(message: errorOn));

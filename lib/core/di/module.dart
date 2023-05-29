@@ -16,7 +16,9 @@ abstract class AppModule {
           connectTimeout: const Duration(milliseconds: 10000),
           receiveTimeout: const Duration(milliseconds: 10000),
           sendTimeout: const Duration(milliseconds: 10000),
-          headers: {"Authorization": getIt<AppConfig>().apiKey}),
+          headers: {
+            "Authorization": getIt<AppConfig>().apiKey,
+          }),
     );
     if (kDebugMode) {
       dio.interceptors.add(PrettyDioLogger(

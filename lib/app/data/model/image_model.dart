@@ -2,12 +2,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'image_model.g.dart';
 
-@JsonSerializable()
-class ImageResponseModel {
+@JsonSerializable(
+  genericArgumentFactories: true,
+)
+class ImageResponseModel<T> {
   int page;
   @JsonKey(name: 'per_page')
   int perPage;
-  List<ImageModel> photos;
+  T? photos;
 
   ImageResponseModel({
     required this.page,
@@ -15,8 +17,13 @@ class ImageResponseModel {
     required this.photos,
   });
 
-  factory ImageResponseModel.fromJson(Map<String, dynamic> data) => _$ImageResponseModelFromJson(data);
-  Map<String, dynamic> toJson() => _$ImageResponseModelToJson(this);
+  factory ImageResponseModel.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) =>
+      _$ImageResponseModelFromJson(json, fromJsonT);
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
+      _$ImageResponseModelToJson(this, toJsonT);
 }
 
 @JsonSerializable()
@@ -50,6 +57,7 @@ class ImageModel {
     required this.alt,
   });
 
-  factory ImageModel.fromJson(Map<String, dynamic> data) => _$ImageModelFromJson(data);
+  factory ImageModel.fromJson(Map<String, dynamic> data) =>
+      _$ImageModelFromJson(data);
   Map<String, dynamic> toJson() => _$ImageModelToJson(this);
 }

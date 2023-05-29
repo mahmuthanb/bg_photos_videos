@@ -7,12 +7,12 @@ part "api_service.g.dart";
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  @POST("/v1/curated")
-  Future<List<ImageModel>> fetchImages();
+  @GET("/v1/curated")
+  Future<ImageResponseModel<List<ImageModel>>> fetchImages();
 
-  @POST("/v1/search")
-  Future<List<ImageModel>> searchImages(
+  @GET("/v1/search")
+  Future<ImageResponseModel<List<ImageModel>>> searchImages(
     @Query("query") String query,
-    // @Query("orientation") String? orientation,
+    @Query("orientation") String? orientation,
   );
 }
