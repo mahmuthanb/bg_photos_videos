@@ -26,9 +26,9 @@ class HomePageLoading extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.all(kMobilePadding),
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 CategoryItemPlaceholder(),
                 CategoryItemPlaceholder(),
                 CategoryItemPlaceholder(),

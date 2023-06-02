@@ -44,7 +44,7 @@ class CustomSearchBar extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: const Icon(Icons.search),
             hintText: "nature, wolf, cat, puppy, kitten...",
-            hintStyle: Theme.of(context).textTheme.bodyText1,
+            hintStyle: Theme.of(context).textTheme.bodyLarge,
           ),
           onFieldSubmitted: (value) {
             if (value.length > 3) {

@@ -7,9 +7,9 @@ class CategoriesBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(kMobilePadding),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
+        children: [
           CategoryListingItem("Hot", Icon(Icons.new_label_outlined)),
           CategoryListingItem("Category", Icon(Icons.category)),
           CategoryListingItem(

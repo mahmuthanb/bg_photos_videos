@@ -106,10 +106,10 @@ class PortraitCarouselTitle extends StatelessWidget {
                                     ),
                                     SizedBox(
                                       height: size.height * .05,
-                                      child: Row(
+                                      child: const Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
-                                        children: const [
+                                        children: [
                                           Icon(Icons.favorite_border),
                                           Icon(Icons.question_answer),
                                           Icon(Icons.more_vert),

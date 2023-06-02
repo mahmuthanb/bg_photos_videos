@@ -21,10 +21,10 @@ class NoConnectivityPage extends StatelessWidget {
                 width: 200,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 24),
               child: Column(
-                children: const [
+                children: [
                   Text(
                     "İnternet Bağlantısı Bulunamadı",
                     textAlign: TextAlign.center,

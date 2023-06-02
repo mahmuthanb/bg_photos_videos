@@ -3,15 +3,15 @@ import 'package:dio/dio.dart';
 
 class ErrorInterceptor extends Interceptor {
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     switch (err.type) {
-      case DioErrorType.connectionTimeout:
-      case DioErrorType.connectionError:
-      case DioErrorType.sendTimeout:
-      case DioErrorType.receiveTimeout:
-      case DioErrorType.badCertificate:
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.connectionError:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+      case DioExceptionType.badCertificate:
         throw DeadlineExceededException(err.requestOptions);
-      case DioErrorType.badResponse:
+      case DioExceptionType.badResponse:
         String? message = err.response?.data?["errorMessage"];
         if (message != null) {
           throw BaseError(message, err.requestOptions);
@@ -29,9 +29,9 @@ class ErrorInterceptor extends Interceptor {
             throw InternalServerErrorException(err.requestOptions);
         }
         break;
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         break;
-      case DioErrorType.unknown:
+      case DioExceptionType.unknown:
         switch (err.runtimeType) {
           case SSLCertificateException:
             throw SSLCertificateException(err.requestOptions);
@@ -45,7 +45,7 @@ class ErrorInterceptor extends Interceptor {
   }
 }
 
-class BaseError extends DioError {
+class BaseError extends DioException {
   BaseError(this.text, RequestOptions r) : super(requestOptions: r);
   final String text;
   @override
@@ -54,7 +54,7 @@ class BaseError extends DioError {
   }
 }
 
-class BadRequestException extends DioError {
+class BadRequestException extends DioException {
   BadRequestException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -63,7 +63,7 @@ class BadRequestException extends DioError {
   }
 }
 
-class InternalServerErrorException extends DioError {
+class InternalServerErrorException extends DioException {
   InternalServerErrorException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -72,7 +72,7 @@ class InternalServerErrorException extends DioError {
   }
 }
 
-class ConflictException extends DioError {
+class ConflictException extends DioException {
   ConflictException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -81,7 +81,7 @@ class ConflictException extends DioError {
   }
 }
 
-class UnauthorizedException extends DioError {
+class UnauthorizedException extends DioException {
   UnauthorizedException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -90,7 +90,7 @@ class UnauthorizedException extends DioError {
   }
 }
 
-class NotFoundException extends DioError {
+class NotFoundException extends DioException {
   NotFoundException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -99,7 +99,7 @@ class NotFoundException extends DioError {
   }
 }
 
-class NoInternetConnectionException extends DioError {
+class NoInternetConnectionException extends DioException {
   NoInternetConnectionException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -108,7 +108,7 @@ class NoInternetConnectionException extends DioError {
   }
 }
 
-class DeadlineExceededException extends DioError {
+class DeadlineExceededException extends DioException {
   DeadlineExceededException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -117,7 +117,7 @@ class DeadlineExceededException extends DioError {
   }
 }
 
-class CancelException extends DioError {
+class CancelException extends DioException {
   CancelException(RequestOptions r) : super(requestOptions: r);
 
   @override
@@ -126,9 +126,9 @@ class CancelException extends DioError {
   }
 }
 
-class SSLCertificateException extends DioError {
+class SSLCertificateException extends DioException {
   SSLCertificateException(RequestOptions r)
-      : super(requestOptions: r, type: DioErrorType.unknown);
+      : super(requestOptions: r, type: DioExceptionType.unknown);
 
   @override
   String toString() {

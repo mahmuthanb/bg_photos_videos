@@ -33,7 +33,7 @@ class ImageDetail extends StatelessWidget {
         backgroundColor:
             Color(int.parse("0xFF${image.avgColor.replaceAll("#", "")}")),
         titleTextStyle:
-            ThemeData().textTheme.headline6!.copyWith(color: Colors.white70),
+            ThemeData().textTheme.titleLarge!.copyWith(color: Colors.white70),
         leading: Builder(
           builder: (BuildContext context) {
             return Container(
@@ -243,7 +243,7 @@ class ImageDetail extends StatelessWidget {
                                   image.src.keys.elementAt(index),
                                   style: ThemeData()
                                       .textTheme
-                                      .headline4!
+                                      .headlineMedium!
                                       .copyWith(color: Colors.white),
                                 ),
                               ],

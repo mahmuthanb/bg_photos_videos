@@ -8,9 +8,9 @@ class VideosScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height,
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Text("VIDEOS SCREEN"),
           Text("VIDEOS SCREEN"),
         ],
