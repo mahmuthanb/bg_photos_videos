@@ -1,7 +1,10 @@
-import 'package:bg_photos_videos/app/page/search/view/search_page.dart';
-import 'package:bg_photos_videos/core/resources/style_guide.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/page/search/view/search_page.dart';
+import 'package:bg_photos_videos/core/resources/style_guide.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({

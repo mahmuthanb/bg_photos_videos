@@ -1,6 +1,8 @@
 // Flutter imports:
-import 'package:bg_photos_videos/core/resources/dimens.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/core/resources/dimens.dart';
 
 class InfoView extends StatelessWidget {
   const InfoView({super.key, required this.icon, required this.text});

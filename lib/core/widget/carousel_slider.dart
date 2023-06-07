@@ -1,8 +1,13 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:carousel_slider/carousel_slider.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/custom_cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 
 class CarouselSliderArea extends StatelessWidget {
   const CarouselSliderArea(this.imageList, {Key? key}) : super(key: key);

@@ -1,5 +1,8 @@
-import 'package:bg_photos_videos/core/resources/style_guide.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/core/resources/style_guide.dart';
 
 class HomePageLoading extends StatelessWidget {
   const HomePageLoading({Key? key}) : super(key: key);

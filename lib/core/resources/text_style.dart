@@ -1,6 +1,8 @@
 // Flutter imports:
-import 'package:bg_photos_videos/core/resources/colors.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/core/resources/colors.dart';
 
 class AppTextStyle {
   static const TextStyle edit = TextStyle(fontSize: 16, color: AppColors.blue);

@@ -1,6 +1,11 @@
+// Dart imports:
 import 'dart:async';
-import 'package:connectivity_plus/connectivity_plus.dart';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 

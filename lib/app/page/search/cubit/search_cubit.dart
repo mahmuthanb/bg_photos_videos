@@ -1,8 +1,13 @@
-import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
-import 'package:equatable/equatable.dart';
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
 
 part 'search_state.dart';
 

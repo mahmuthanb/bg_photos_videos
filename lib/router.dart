@@ -1,12 +1,17 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:injectable/injectable.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/app/page/photos/photos.dart';
 import 'package:bg_photos_videos/app/page/profile/profile.dart';
 import 'package:bg_photos_videos/app/page/unknown.dart';
 import 'package:bg_photos_videos/app/page/videos/videos.dart';
-import 'package:bg_photos_videos/core/source/local_data_source.dart';
 import 'package:bg_photos_videos/core/di/locator.dart';
+import 'package:bg_photos_videos/core/source/local_data_source.dart';
 import 'package:bg_photos_videos/core/widget/no_connectivity.dart';
-import 'package:flutter/material.dart';
-import 'package:injectable/injectable.dart';
 
 class RouteModel {
   WidgetBuilder builder;

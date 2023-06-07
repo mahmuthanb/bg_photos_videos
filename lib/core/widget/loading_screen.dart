@@ -1,5 +1,8 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoadingScreen extends StatelessWidget {

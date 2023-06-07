@@ -1,11 +1,16 @@
-import 'package:bg_photos_videos/app/data/service/api_service.dart';
-import 'package:bg_photos_videos/core/source/app_config.dart';
-import 'package:bg_photos_videos/core/di/locator.dart';
+// Flutter imports:
+import 'package:flutter/foundation.dart';
+
+// Package imports:
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/data/service/api_service.dart';
+import 'package:bg_photos_videos/core/di/locator.dart';
+import 'package:bg_photos_videos/core/source/app_config.dart';
 
 @module
 abstract class AppModule {

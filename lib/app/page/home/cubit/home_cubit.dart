@@ -1,9 +1,16 @@
+// Dart imports:
 import 'dart:convert';
-import 'package:bg_photos_videos/app/data/model/image_model.dart';
-import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
+
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/data/model/image_model.dart';
+import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
 
 part 'home_state.dart';
 

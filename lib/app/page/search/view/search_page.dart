@@ -1,8 +1,13 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/app/page/search/cubit/search_cubit.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/searchbar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({

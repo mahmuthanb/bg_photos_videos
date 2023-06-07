@@ -1,7 +1,9 @@
 // Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/core/resources/text_style.dart';
 import 'package:bg_photos_videos/core/widget/loading.dart';
-import 'package:flutter/material.dart';
 
 class UnknownPage extends StatefulWidget {
   const UnknownPage({Key? key}) : super(key: key);

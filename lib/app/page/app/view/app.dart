@@ -1,3 +1,11 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
 import 'package:bg_photos_videos/app/page/connectivity_check/cubit/internet_cubit.dart';
 import 'package:bg_photos_videos/app/page/home/cubit/home_cubit.dart';
@@ -9,9 +17,6 @@ import 'package:bg_photos_videos/app/page/videos/view/videos_page.dart';
 import 'package:bg_photos_videos/core/di/locator.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/loading_screen.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 final PageController _controller = PageController();
 int selectedPage = 0;

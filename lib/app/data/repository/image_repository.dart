@@ -1,6 +1,9 @@
+// Package imports:
+import 'package:injectable/injectable.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
 import 'package:bg_photos_videos/app/data/service/api_service.dart';
-import 'package:injectable/injectable.dart';
 
 @injectable
 class ImageRepository {

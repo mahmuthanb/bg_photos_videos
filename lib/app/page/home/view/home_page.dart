@@ -1,10 +1,15 @@
-import 'package:bg_photos_videos/app/page/home/cubit/home_cubit.dart';
-import 'package:bg_photos_videos/core/widget/error_screen.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bg_photos_videos/core/widget/home_page_loading.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/page/home/cubit/home_cubit.dart';
 import 'package:bg_photos_videos/core/widget/carousel_slider.dart';
+import 'package:bg_photos_videos/core/widget/error_screen.dart';
+import 'package:bg_photos_videos/core/widget/home_page_loading.dart';
 import 'package:bg_photos_videos/core/widget/portrait_carousel_title.dart';
 import 'package:bg_photos_videos/core/widget/searchbar.dart';
 

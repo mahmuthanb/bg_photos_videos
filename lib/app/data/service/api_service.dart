@@ -1,6 +1,10 @@
-import 'package:bg_photos_videos/app/data/model/image_model.dart';
+// Package imports:
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/data/model/image_model.dart';
+
 part "api_service.g.dart";
 
 @RestApi()

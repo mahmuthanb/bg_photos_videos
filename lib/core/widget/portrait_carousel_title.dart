@@ -1,10 +1,15 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
+
+// Project imports:
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
-import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/app/page/image_detail/view/image_detail_page.dart';
+import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/animated_dialog.dart';
 import 'package:bg_photos_videos/core/widget/custom_cached_network_image.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
 
 class PortraitCarouselTitle extends StatelessWidget {
   const PortraitCarouselTitle(

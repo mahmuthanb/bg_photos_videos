@@ -1,6 +1,11 @@
-import 'package:bg_photos_videos/core/resources/style_guide.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/core/resources/style_guide.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage(this.url,

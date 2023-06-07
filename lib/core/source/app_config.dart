@@ -1,6 +1,8 @@
 // Package imports:
-import 'package:bg_photos_videos/app/data/api_provider.dart';
 import 'package:injectable/injectable.dart';
+
+// Project imports:
+import 'package:bg_photos_videos/app/data/api_provider.dart';
 
 abstract class AppConfig {
   String get appName;
