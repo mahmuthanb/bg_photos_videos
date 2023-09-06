@@ -3,9 +3,11 @@ import 'package:bg_photos_videos/app/data/model/image_model.dart';
 import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 part 'home_state.dart';
 
+@injectable
 class HomeCubit extends Cubit<HomeState> {
   final ImageRepository _imageRepository;
   HomeCubit(this._imageRepository) : super(HomeLoading()) {

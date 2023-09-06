@@ -44,7 +44,7 @@ class SearchScreen extends StatelessWidget {
                           )),
                       SizedBox(
                         width: size.width * .875,
-                        child: SearchBar(requestFocus: requestFocus),
+                        child: CustomSearchBar(requestFocus: requestFocus),
                       ),
                     ],
                   ),

@@ -2,9 +2,11 @@ import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 part 'search_state.dart';
 
+@injectable
 class SearchCubit extends Cubit<SearchState> {
   final ImageRepository _imageRepository;
 

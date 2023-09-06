@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const SearchBar(enabled: false, requestFocus: true),
+                  const CustomSearchBar(enabled: false, requestFocus: true),
                   CarouselSliderArea(state.images[0]),
                   PortraitCarouselTitle("Nature", state.images[1]),
                   PortraitCarouselTitle("Deutschland", state.images[2]),

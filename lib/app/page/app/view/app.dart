@@ -1,14 +1,12 @@
 import 'package:bg_photos_videos/app/data/repository/image_repository.dart';
-import 'package:bg_photos_videos/app/data/service/api_service.dart';
-import 'package:bg_photos_videos/app/data/service/network.dart';
 import 'package:bg_photos_videos/app/page/connectivity_check/cubit/internet_cubit.dart';
 import 'package:bg_photos_videos/app/page/home/cubit/home_cubit.dart';
 import 'package:bg_photos_videos/app/page/home/view/home_page.dart';
 import 'package:bg_photos_videos/app/page/photos/view/photos_page.dart';
 import 'package:bg_photos_videos/app/page/profile/view/profile_page.dart';
 import 'package:bg_photos_videos/app/page/search/cubit/search_cubit.dart';
-import 'package:bg_photos_videos/app/page/search/view/search_page.dart';
 import 'package:bg_photos_videos/app/page/videos/view/videos_page.dart';
+import 'package:bg_photos_videos/core/di/locator.dart';
 import 'package:bg_photos_videos/core/resources/style_guide.dart';
 import 'package:bg_photos_videos/core/widget/loading_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -36,12 +34,10 @@ class _MainAppState extends State<MainApp> {
       darkTheme: customDarkTheme,
       home: MultiBlocProvider(
         providers: [
-          BlocProvider<InternetCubit>(
-              create: (BuildContext context) => InternetCubit()),
-          RepositoryProvider(create: (context) => ImageRepository()),
-          BlocProvider<HomeCubit>(
-              create: (BuildContext context) => HomeCubit()),
-          BlocProvider<SearchCubit>(child: SearchScreen()),
+          BlocProvider<InternetCubit>(create: (_) => getIt<InternetCubit>()),
+          RepositoryProvider(create: (_) => getIt<ImageRepository>()),
+          BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),
+          BlocProvider<SearchCubit>(create: (context) => getIt<SearchCubit>()),
         ],
         child: Scaffold(
           body: BlocBuilder<InternetCubit, InternetState>(

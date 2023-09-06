@@ -1,4 +1,3 @@
-import 'package:bg_photos_videos/app/data/api_provider.dart';
 import 'package:bg_photos_videos/app/data/service/api_service.dart';
 import 'package:bg_photos_videos/core/source/app_config.dart';
 import 'package:bg_photos_videos/core/di/locator.dart';

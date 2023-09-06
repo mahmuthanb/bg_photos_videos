@@ -1,9 +1,10 @@
 import 'package:bg_photos_videos/app/data/model/image_model.dart';
 import 'package:bg_photos_videos/app/data/service/api_service.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class ImageRepository {
   final ApiService _apiService;
-
   ImageRepository(this._apiService);
 
   Future<List<ImageModel>> fetchImage() async {
@@ -15,7 +16,7 @@ class ImageRepository {
     String query, {
     String? orientation,
   }) async {
-    final searchResult = await _apiService.searchImages(query, orientation);
+    final searchResult = await _apiService.searchImages(query);
     return searchResult;
   }
 }

@@ -13,6 +13,6 @@ abstract class ApiService {
   @POST("/v1/search")
   Future<List<ImageModel>> searchImages(
     @Query("query") String query,
-    @Query("orientation") String? orientation,
+    // @Query("orientation") String? orientation,
   );
 }
